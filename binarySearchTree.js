@@ -260,8 +260,20 @@ function Tree(nodeArray) {
     };
 
     function height(value) {
-
         let currentNode = root;
+
+        let height = 0;
+        function traverseHeight(node) {
+            if (node === null) {
+                return 0;
+            }
+
+            const left = traverseHeight(node.left);
+            const right = traverseHeight(node.right);
+            return 1 + Math.max(left, right);
+        }
+
+        if (value == root.data) return traverseHeight(currentNode) - 1;
 
         while (currentNode != null) {
             if (value < currentNode.data) {
@@ -269,13 +281,7 @@ function Tree(nodeArray) {
             } else if (value > currentNode.data) {
                 currentNode = currentNode.right;
             } else {
-                let height = 0;
-
-                while (currentNode != null) {
-
-                }
-
-                break;
+                return traverseHeight(currentNode) - 1;
             }
         }
 
@@ -314,13 +320,15 @@ function Tree(nodeArray) {
         preOrderForEach,
         postOrderForEach,
         height,
-        depth
+        depth,
     };
 }
 // const tree = Tree([1, 2, 3, 4, 5, 6, 9, 10, 11, 12, 13, 15, 16, 17, 20 , 23, 24, 25, 26, 27, 28, 30, 31]);
-const tree = Tree([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]);
+const tree = Tree([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]);
 // const tree = Tree([1, 2, 3, 4, 5, 6, 7]);
 tree.insert(0);
+
+console.log(tree.height(12));
 
 tree.prettyPrint(tree.root);
 
