@@ -1,4 +1,4 @@
-# Binary-Search-Tress
+# Balanced-Binary-Search-Tress
 
 ## Tree function factory representing a balanced binary search tree containing the following methods:
 - `buildTree(array)`: takes an array of data and turns it into a balanced binary tree full of Node objects appropriately placed. The buildTree function returns the level-0 root node.
