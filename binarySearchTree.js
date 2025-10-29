@@ -2,8 +2,8 @@ function bNode(data, left, right) {
     return { data, left, right };
 }
 
-function Tree(nodeArray) {
-    root = buildTree(nodeArray);
+export function Tree(nodeArray) {
+    let root = buildTree(nodeArray);
 
     function buildTree(nodeArray) {
         mergeSort(nodeArray);
@@ -186,6 +186,7 @@ function Tree(nodeArray) {
         }
 
         inOrderTraversal(callback, queue[0]);
+        return;
     }
 
     function preOrderForEach(callback) {
@@ -206,6 +207,7 @@ function Tree(nodeArray) {
         }
 
         preOrderTraversal(callback, queue[0]);
+        return;
     }
 
     function postOrderForEach(callback) {
@@ -226,6 +228,7 @@ function Tree(nodeArray) {
         }
 
         postOrderTraversal(callback, queue[0]);
+        return;
     }
 
     const prettyPrint = (node, prefix = "", isLeft = true) => {
@@ -335,16 +338,16 @@ function Tree(nodeArray) {
     };
 }
 // const tree = Tree([1, 2, 3, 4, 5, 6, 9, 10, 11, 12, 13, 15, 16, 17, 20 , 23, 24, 25, 26, 27, 28, 30, 31]);
-const tree = Tree([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]);
+// const tree = Tree([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]);
 // const tree = Tree([1, 2, 3, 4, 5, 6, 7]);
-tree.insert(0);
-tree.insert(-1);
-tree.insert(-2);
-tree.insert(-3);
+// tree.insert(0);
+// tree.insert(-1);
+// tree.insert(-2);
+// tree.insert(-3);
 
-tree.rebalance();
+// tree.rebalance();
 
-tree.prettyPrint(tree.root);
+// tree.prettyPrint(tree.root);
 
 function removeDup(array) {
     for (let i = 0; i < array.length; i++) {
