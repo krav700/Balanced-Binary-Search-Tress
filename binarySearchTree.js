@@ -262,7 +262,6 @@ function Tree(nodeArray) {
     function height(value) {
         let currentNode = root;
 
-        let height = 0;
         function traverseHeight(node) {
             if (node === null) {
                 return 0;
@@ -308,6 +307,20 @@ function Tree(nodeArray) {
         return null;
     }
 
+    function isBalanced() {
+            function checkAllSubtrees(node) {
+                if (node === null) return 0;
+                const checkLeft = checkAllSubtrees(node.left);
+                if (checkLeft === -1) return -1;
+                const checkRight = checkAllSubtrees(node.right);
+                if (checkRight === -1) return -1
+                if (Math.abs(checkLeft - checkRight) > 1) return -1;
+                return 1 + Math.max(checkLeft, checkRight);
+            }
+
+            return checkAllSubtrees(root) !== -1;
+    }
+
     return {
         root,
         buildTree,
@@ -321,14 +334,17 @@ function Tree(nodeArray) {
         postOrderForEach,
         height,
         depth,
+        isBalanced
     };
 }
 // const tree = Tree([1, 2, 3, 4, 5, 6, 9, 10, 11, 12, 13, 15, 16, 17, 20 , 23, 24, 25, 26, 27, 28, 30, 31]);
 const tree = Tree([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]);
 // const tree = Tree([1, 2, 3, 4, 5, 6, 7]);
 tree.insert(0);
+tree.deleteItem(0);
+tree.deleteItem(1);
 
-console.log(tree.height(12));
+console.log(tree.isBalanced());
 
 tree.prettyPrint(tree.root);
 
