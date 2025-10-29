@@ -10,9 +10,9 @@ const tree = Tree(testArray);
 
 console.log(tree.isBalanced());
 
-function printData(x) {
-    console.log(x.data);
-}
+// function printData(x) {
+//     console.log(x.data);
+// }
 
 tree.prettyPrint(tree.root);
 
@@ -26,7 +26,7 @@ tree.prettyPrint(tree.root);
 // tree.inOrderForEach(printData);
 
 for (let i = 0; i < 10; i++) {
-    tree.insert((Math.floor(Math.random() * 100) + 100));
+    tree.insert(Math.floor(Math.random() * 100) + 100);
 }
 
 console.log(tree.isBalanced());
