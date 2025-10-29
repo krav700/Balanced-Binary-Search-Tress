@@ -8,17 +8,7 @@ function Tree(nodeArray) {
     function buildTree(nodeArray) {
         mergeSort(nodeArray);
         removeDup(nodeArray);
-
         return traverse(nodeArray, 0, nodeArray.length - 1);
-
-        /*
-            1 2 3 4 5 6 7
-    
-                4
-            2       6
-          1   3   5   7
-        
-        */
     }
 
     function traverse(array, start, end) {
@@ -321,8 +311,14 @@ function Tree(nodeArray) {
             return checkAllSubtrees(root) !== -1;
     }
 
+    function rebalance() {
+        let newArray = [];
+        levelOrderForEach((x) => {newArray.push(x.data)})
+        root = buildTree(newArray);
+    }
+
     return {
-        root,
+        get root() { return root },
         buildTree,
         insert,
         prettyPrint,
@@ -334,17 +330,19 @@ function Tree(nodeArray) {
         postOrderForEach,
         height,
         depth,
-        isBalanced
+        isBalanced,
+        rebalance
     };
 }
 // const tree = Tree([1, 2, 3, 4, 5, 6, 9, 10, 11, 12, 13, 15, 16, 17, 20 , 23, 24, 25, 26, 27, 28, 30, 31]);
 const tree = Tree([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]);
 // const tree = Tree([1, 2, 3, 4, 5, 6, 7]);
 tree.insert(0);
-tree.deleteItem(0);
-tree.deleteItem(1);
+tree.insert(-1);
+tree.insert(-2);
+tree.insert(-3);
 
-console.log(tree.isBalanced());
+tree.rebalance();
 
 tree.prettyPrint(tree.root);
 
